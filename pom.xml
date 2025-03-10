@@ -6,22 +6,120 @@
 
     <groupId>com.xyf</groupId>
     <artifactId>mybatis-emt</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>基于 MyBatis 的表结构逆向映射的自动化维护框架</description>
+    <url>${githubUrl}</url>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.15</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- 子模块 -->
+    <modules>
+        <module>mybatis-emt-test</module>
+        <module>mybatis-emt-core</module>
+        <module>mybatis-emt-common</module>
+        <module>mybatis-emt-spring-boot-starter</module>
+    </modules>
 
     <properties>
+        <java.version>1.8</java.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot.version>2.7.18</spring-boot.version>
+        <!-- 项目仓库url -->
+        <githubUrl>https://github.com/gbb0207/mybatis-emt</githubUrl>
+        <mybatis.version>3.5.14</mybatis.version>
+        <spring.version>5.3.31</spring.version>
+        <mybatis-spring.version>2.1.2</mybatis-spring.version>
+        <lombok.version>1.18.30</lombok.version>
     </properties>
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>熊韵飞</name>
+            <email>1198113614@qq.com</email>
+        </developer>
+    </developers>
+
+    <!-- 开源许可 -->
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo,manual</distribution>
+        </license>
+    </licenses>
+
+    <!-- 定义项目的源码管理系统信息，如 Git 仓库的 URL -->
+    <scm>
+        <!-- 采用projectUrl变量代替这个值，方便给重复利用这个配置，也就是上面的标签替换一下值就行 -->
+        <connection>${githubUrl}</connection>
+        <developerConnection>${githubUrl}</developerConnection>
+        <url>${githubUrl}</url>
+    </scm>
+
+    <packaging>pom</packaging>
+
+    <!-- 发布管理，阿里云maven仓库 -->
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
+                <version>1.18.30</version>
                 <scope>provided</scope>
                 <optional>true</optional>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <!--  -->
+    <build>
+        <plugins>
+            <!-- 编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <parameters>true</parameters>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <!-- 发布插件，暂无平台 -->
+            <!--<plugin>-->
+            <!--    <groupId>org.apache.maven.plugins</groupId>-->
+            <!--    <artifactId>maven-deploy-plugin</artifactId>-->
+            <!--    <version>2.7</version>-->
+            <!--</plugin>-->
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 </project>

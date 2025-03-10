@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    username: root
+    password: 12345
+    url: jdbc:mysql://localhost:3306/mybatis_emt_test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  configuration:
+    default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+  global-config:
+    db-config:
+      update-strategy: not_null
+      id-type: auto
+
+emt:
+  enable: true  # 实际加不加都行，启动类上加了 @EnableEmt 就行，因为 EmtProperties 默认给的 true
+  mode: create  # 删除所有表，重新建表；默认是 update
