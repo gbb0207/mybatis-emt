@@ -95,7 +95,7 @@ public interface IStrategy<TABLE_META extends TableMetadata, COMPARE_TABLE_INFO 
      *
      * @param entityClass 待处理的实体
      */
-    default void start(Class<?> entityClass) {  // 从这里开始看！
+    default void start(Class<?> entityClass) {  // 从这里开始
 
         EmtGlobalConfig.getRunStateCallback().before(entityClass);    // 回调钩子，前置通知
 
@@ -304,7 +304,7 @@ public interface IStrategy<TABLE_META extends TableMetadata, COMPARE_TABLE_INFO 
                 throw new RuntimeException(String.format("执行SQL: \n%s\n期间出错", String.join("\n", sqlList)), e);
             }
 
-            // 记录SQL，看完啦！！
+            // 记录SQL
             RecordSqlService.record(emtExecuteSqlLogs);   // 这里传入的是一条具体需要插入到备份表/文件的记录，EmtExecuteSqlLog 的实现类
 
         } catch (SQLException e) {

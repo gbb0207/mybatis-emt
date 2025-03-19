@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * 获取注解的basePackages
+ * 获取注解的basePackages，在spring执行时就会执行这里
  */
 public class EmtImportRegister implements ImportBeanDefinitionRegistrar {
 
@@ -23,7 +23,6 @@ public class EmtImportRegister implements ImportBeanDefinitionRegistrar {
 
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-
         // 当取到basePackages，则不再继续执行，发生的场景是单元测试和启动类都指定了basePackages，优先以单元测试的为准
         if (basePackagesFromAnno != null) {
             return;

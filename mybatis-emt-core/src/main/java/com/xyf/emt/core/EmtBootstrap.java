@@ -79,7 +79,7 @@ public class EmtBootstrap {
             IStrategy<?, ?, ?> databaseStrategy = EmtGlobalConfig.getStrategy(databaseDialect);
             if (databaseStrategy != null) {
                 for (Class<?> entityClass : entityClasses) {
-                    databaseStrategy.start(entityClass);    // 最重要！东西超级多。进去好好看，这是个 default 方法，所以和方言无关。
+                    databaseStrategy.start(entityClass);    // 最重要！东西超级多。这是个 default 方法，所以和方言无关。
                 }
             } else {
                 log.warn("没有找到对应的数据库（{}）方言策略，无法自动维护表结构", databaseDialect);

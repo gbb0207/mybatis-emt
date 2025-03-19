@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 全局配置
+ * 全局配置，类的静态成员会在类在 JVM 加载时初始化，而 Spring 容器的创建当然是在类加载之后。所以每个组件这里都给一个默认值。在 EmtAutoConfig 中将用户实现接口的自定义组件覆盖下面的默认的组件。
  */
 public class EmtGlobalConfig {
 

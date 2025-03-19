@@ -51,7 +51,7 @@ public class TableBeanUtils {
      * @param clazz bean
      * @return 表名
      */
-    public static String getTableName(Class<?> clazz) { // 看过
+    public static String getTableName(Class<?> clazz) {
 
         String tableName = null;
 

@@ -2,10 +2,12 @@ server:
   port: 8081
 
 spring:
+  profiles:
+    active: test
   datasource:
-    username: root
-    password: 12345
-    url: jdbc:mysql://localhost:3306/mybatis_emt_test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    url: ${spring.datasource.url}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis-plus:

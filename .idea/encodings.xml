@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/mybatis-emt-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis-emt-core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis-emt-spring-boot-starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis-emt-test/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatis-emt-test/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mybatis-met-doc/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/mybatis-met-doc/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>

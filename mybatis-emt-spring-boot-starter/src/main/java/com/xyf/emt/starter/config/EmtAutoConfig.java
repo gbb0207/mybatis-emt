@@ -31,10 +31,10 @@ import com.xyf.emt.starter.util.CustomAnnotationFinder;
  * @Description:
  */
 
-@AutoConfigureAfter({DataSourceAutoConfiguration.class})
+@AutoConfigureAfter({DataSourceAutoConfiguration.class})    // 需要等待 mybatis/mp 执行完才执行，所以慢于 EmtImportRegister，可以在 spring 启动时就找到默认包
 public class EmtAutoConfig {
 
-    public EmtAutoConfig(
+    public EmtAutoConfig(   // spring 会默认执行这个构造器
             SqlSessionTemplate sqlSessionTemplate,
             EmtProperties emtProperties,
             ObjectProvider<IStrategy<? extends TableMetadata, ? extends CompareTableInfo, ?>> strategies,
@@ -64,7 +64,7 @@ public class EmtAutoConfig {
         if (EmtImportRegister.basePackagesFromAnno != null) {
             propertiesConfig.setModelPackage(EmtImportRegister.basePackagesFromAnno);
         }
-        EmtGlobalConfig.setEmtProperties(propertiesConfig); // 这个参数是必备的，下方都是非必备的
+        EmtGlobalConfig.setEmtProperties(propertiesConfig); // 只有这个参数是必备的，下方都是非必备的
 
         // 假如有自定的注解扫描器，就使用自定义的注解扫描器。没有，则设置内置的注解扫描器
         // 虽然这里是一个类，但是和下方全局配置类中的接口匿名内部类没有区别。只是由于这个接口默认方法不足以让实现的匿名内部类有作用，需要一个类来完成重写逻辑再让他默认
