@@ -20,4 +20,7 @@ mybatis-plus:
 
 emt:
   enable: true  # 实际加不加都行，启动类上加了 @EnableEmt 就行，因为 EmtProperties 默认给的 true
-  mode: create  # 删除所有表，重新建表；默认是 update
+  mode: update
+  record-sql:
+    enable: true
+

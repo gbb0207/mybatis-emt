@@ -122,13 +122,13 @@ public interface IStrategy<TABLE_META extends TableMetadata, COMPARE_TABLE_INFO 
 
         // 目前只有 检查（表不一致不能启动），创建（删了重新建），追加（只加新有的表、字段、索引等）
         switch (runMode) {
-            case validate:  // 系统启动时，会检查数据库中的表与 java 实体类是否匹配。如果不匹配，则启动失败。只做匹配，不创建表。应该叫 check
+            case validate:  // 系统启动时，会检查数据库中的表与 java 实体类是否匹配。如果不匹配，则启动失败。只做匹配，不创建表。check
                 validateMode(tableMetadata);    // 3
                 break;
-            case create:    // 系统启动时，会先将所有的表删除掉，然后根据 model 中配置的结构重新建表，该模式会清空原有数据。应该叫 reset。
+            case create:    // 系统启动时，会先将所有的表删除掉，然后根据 model 中配置的结构重新建表，该模式会清空原有数据。reset。
                 createMode(tableMetadata);  // 2
                 break;
-            case update:    // 系统启动时，会自动判断哪些表是新建的，哪些字段要新增修改，哪些索引/约束要新增删除等。应该叫 append，但不只有追加，没有的也会删除，这个名字没问题。
+            case update:    // 系统启动时，会自动判断哪些表是新建的，哪些字段要新增修改，哪些索引/约束要新增删除等。append，但不只有追加，没有的也会删除。
                 updateMode(tableMetadata);  // 1
                 break;
             default:    // none 这个枚举已经在 Bootstrap 中处理了，只要为 none 在 Bootstrap 开头判断后都不会往后进行。

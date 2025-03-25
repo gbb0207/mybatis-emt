@@ -49,7 +49,7 @@ public @interface Column {
     String defaultValue() default "";
 
     /**
-     * 默认值，默认为null
+     * 默认值，默认为null。这个字段作用为：如果列值为空，是用未定义、空字符串还是Null来填入。
      * {@link ColumnDefault#type()}
      *
      * @return 默认值

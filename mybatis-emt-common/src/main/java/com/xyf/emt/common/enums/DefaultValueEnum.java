@@ -8,15 +8,24 @@ package com.xyf.emt.common.enums;
 public enum DefaultValueEnum {
 
     /**
-     * 未定义：在注解中必须填写一个值，同时表示无意义
+     * 未定义：在注解中必须填写一个值，同时表示无意义。例如：
+     * CREATE TABLE test_table (
+     *     name VARCHAR(50)
+     * );
      */
     UNDEFINED,
     /**
-     * 空字符串：仅限于字符串类型
+     * 空字符串：仅限于字符串类型。例如：
+     * CREATE TABLE test_table (
+     *     description VARCHAR(200) DEFAULT ''
+     * );
      */
     EMPTY_STRING,
     /**
-     * null值
+     * null值。例如：
+     * CREATE TABLE test_table (
+     *     address VARCHAR(200) DEFAULT NULL
+     * );
      */
     NULL;
 
