@@ -66,7 +66,7 @@ public class PropertyConfig {
         private boolean enable = false;
 
         /**
-         * 记录方式，默认是数据库
+         * 记录方式，默认是数据库，这里使用自定义枚举导致无法在配置文件中IDEA生成联想，但这里不得不使用枚举来约束记录方式，直接写record-type即可
          */
         private TypeEnum recordType = TypeEnum.db;
 
