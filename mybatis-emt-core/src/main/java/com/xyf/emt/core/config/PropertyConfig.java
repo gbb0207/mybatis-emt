@@ -27,7 +27,7 @@ public class PropertyConfig {
      */
     private String[] modelPackage;
     /**
-     * 自己定义的索引前缀
+     * 自己定义的索引前缀，idx是默认普通索引名前缀，如果是唯一索引用uk（阿里巴巴规范）
      */
     private String indexPrefix = "emt_idx_";
     /**
