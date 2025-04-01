@@ -20,7 +20,11 @@ mybatis-plus:
 
 emt:
   enable: true  # 实际加不加都行，启动类上加了 @EnableEmt 就行，因为 EmtProperties 默认给的 true
-  mode: update
+  mode: create
+#  auto-drop-column: true  # 配合 update 模式，删除无用列
   record-sql:
     enable: true
+    record-type: file # 默认生成 .sql 文件
+    folder-path: sql-log\ # 本项目下
+    version: 1.0
 

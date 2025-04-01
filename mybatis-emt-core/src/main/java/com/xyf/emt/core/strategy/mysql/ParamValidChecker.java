@@ -26,6 +26,7 @@ public class ParamValidChecker {
         }
         return null;
     };
+
     /**
      * 空字符默认值，只能在字段类型为字符串的时候设置
      */
