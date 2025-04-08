@@ -99,9 +99,11 @@ public interface IStrategy<TABLE_META extends TableMetadata, COMPARE_TABLE_INFO 
 
         EmtGlobalConfig.getRunStateCallback().before(entityClass);    // 回调钩子，前置通知
 
+        // 4.实体元数据分析与中间模型转换
         // 实际这个方法里都是 XxxTableMetadataBuilder.build(); Xxx 是方言名
         TABLE_META tableMetadata = this.analyseClass(entityClass);
 
+        // 5.进去再说
         // 实际
         this.start(tableMetadata);
 
@@ -120,6 +122,8 @@ public interface IStrategy<TABLE_META extends TableMetadata, COMPARE_TABLE_INFO 
         // 根据启动模式确定具体行为，默认是 update
         RunMode runMode = EmtGlobalConfig.getEmtProperties().getMode();
 
+        // 5.启动模式区分
+        // 6.validate、update 有验证差异，然后均有 sql 组装与执行（删表、更新表、建表都算在这）
         // 目前只有 检查（表不一致不能启动），创建（删了重新建），追加（只加新有的表、字段、索引等）
         switch (runMode) {
             case validate:  // 系统启动时，会检查数据库中的表与 java 实体类是否匹配。如果不匹配，则启动失败。只做匹配，不创建表。check

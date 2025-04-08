@@ -13,6 +13,9 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * 没有设计接口，因为不同数据库sql构建方案不一致，具体流程具体设计，仅当作一个工具类
+ */
 @Slf4j
 public class CreateTableSqlBuilder {    // 生成建表 sql 字符串，即：CREATE TABLE xxx
 
@@ -33,7 +36,7 @@ public class CreateTableSqlBuilder {    // 生成建表 sql 字符串，即：CR
         String engine = mysqlTableMetadata.getEngine(); // 引擎
         String comment = mysqlTableMetadata.getComment();   // 注释
 
-        // 1.字段、索引（主键在这里处理，不作为表级选项）todo 没有外键，等着加
+        // 1.字段、索引（主键在这里处理，不作为表级选项）
         // 记录所有处理过的字段/修改项，（利用数组结构，便于添加,分割），这里就是 MysqlTableMetadata 需要处理的字段
         List<String> addItems = new ArrayList<>();
 
@@ -52,7 +55,7 @@ public class CreateTableSqlBuilder {    // 生成建表 sql 字符串，即：CR
         // `id` int    NULL    ,`username` varchar(255)    NULL    ,`age` int    NULL    ,`phone` varchar(255)    NOT NULL    ,`present_time` timestamp    NULL DEFAULT CURRENT_TIMESTAMP   ,`united1` int    NULL    ,`united2` int    NULL
         addItems.add(
                 mysqlColumnMetadataList.stream()
-                        .sorted(Comparator.comparingInt(MysqlColumnMetadata::getPosition))  // 此处怎么来的，见 todo3
+                        .sorted(Comparator.comparingInt(MysqlColumnMetadata::getPosition))
                         // 拼接每个字段的sql片段
                         .map(ColumnSqlBuilder::buildSql)    // 将从实体类属性的元数据转变为 sql，为 CREATE 语句中的列语句
                         .collect(Collectors.joining(","))

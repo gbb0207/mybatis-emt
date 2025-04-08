@@ -14,7 +14,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("emt")
 public class EmtProperties {
 
-    public static final String ENABLE_KEY = "auto-table.enable";
+    public static final String ENABLE_KEY = "emt.enable";
 
     /**
      * 是否显示banner

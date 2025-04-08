@@ -11,7 +11,7 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 @Slf4j
-public class DefaultTableMetadataBuilder {
+public class DefaultTableMetadataBuilder {  // 实际是没什么用的，写了放着吧，每个数据库类型完成自己的，例如：MysqlTableMetadataBuilder
 
     protected final ColumnMetadataBuilder columnMetadataBuilder;
     protected final IndexMetadataBuilder indexMetadataBuilder;

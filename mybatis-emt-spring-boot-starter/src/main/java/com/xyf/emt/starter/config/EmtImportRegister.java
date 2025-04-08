@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * 获取注解的basePackages，在spring执行时就会执行这里
+ * 获取注解的basePackages，在spring执行时就会执行这里，保证在emt之前就执行，取出@EnableEmt中的basePackages
  */
 public class EmtImportRegister implements ImportBeanDefinitionRegistrar {
 

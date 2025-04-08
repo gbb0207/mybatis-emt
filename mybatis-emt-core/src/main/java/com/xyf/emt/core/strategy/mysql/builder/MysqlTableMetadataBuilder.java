@@ -39,7 +39,7 @@ public class MysqlTableMetadataBuilder {    // 单个方法，返回实体类注
             collate = mysqlCharsetAnno.collate();
         } else {    // 如果没用注解主动声明字符集，就用默认字符集创建
             PropertyConfig emtProperties = EmtGlobalConfig.getEmtProperties();
-            // yml 中如果也没有 auto-table: mysql : xxx-default-xxx，那么下面两个也是 null~
+            // yml 中如果也没有 emt: mysql : xxx-default-xxx，那么下面两个也是 null~
             charset = emtProperties.getMysql().getTableDefaultCharset();
             collate = emtProperties.getMysql().getTableDefaultCollation();
         }
@@ -56,7 +56,7 @@ public class MysqlTableMetadataBuilder {    // 单个方法，返回实体类注
             mysqlTableMetadata.setEngine(mysqlEngine.value());
         }
 
-        // 获取一个类下的所有 Field 字段，实际里面洗了一下避免父类继承重名问题，，，这里目前懒得看。
+        // 获取一个类下的所有 Field 字段，实际里面洗了一下避免父类继承重名问题
         List<Field> fields = BeanClassUtil.listAllFieldForColumn(clazz);
 
         // 从注解中提取所有列，会排除打了 @Ignore 的属性。

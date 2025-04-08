@@ -41,7 +41,7 @@ public interface IDataSourceHandler {
         Map<String, Set<Class<?>>> needHandleTableMap = classList.stream()  // 注意下方 getDataSourceName()，需要配合 @Ds 注解标在实体类上（自定义注解！）
                 .collect(Collectors.groupingBy(this::getDataSourceName, Collectors.toSet()));   // groupingBy() 会返回一个 Map，好好学好好用
 
-        needHandleTableMap.forEach((dataSource, entityClasses) -> {
+        needHandleTableMap.forEach((dataSource, entityClasses) -> { // 没有主动指定数据源，所有实体类的数据源都默认为空字符串，走默认的 mysql 策略
             log.info("使用数据源：{}", dataSource);
             // 使用数据源。
             this.useDataSource(dataSource);
@@ -103,5 +103,5 @@ public interface IDataSourceHandler {
      * @param clazz 指定类
      * @return 数据源名称，表分组的依据，届时，根据该值分组所有的表，同一数据源下的统一处理
      */
-    @NonNull String  getDataSourceName(Class<?> clazz);
+    @NonNull String getDataSourceName(Class<?> clazz);
 }

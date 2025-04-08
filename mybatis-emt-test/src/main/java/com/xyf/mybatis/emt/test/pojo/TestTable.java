@@ -32,8 +32,6 @@ public class TestTable {
     @PrimaryKey(true)
     private Integer id;
 
-    private String username;
-
     @Column(value = "age", type = "int", length = 11, notNull = true, comment = "年龄")
     private Integer age;
 
@@ -44,13 +42,12 @@ public class TestTable {
     @Column(value = "present_time", type = "timestamp", defaultValue = "CURRENT_TIMESTAMP")
     private Timestamp presentTime;
 
-    @Column(value = "test_int", type = "int", length = 2)
     @Ignore
-    private Integer testInt;    // @Ignore，忽略此字段，不会包含在列中。只有主动忽略才不会对其创建。
+    private Integer ignore;    // @Ignore，忽略此字段，不会包含在列中。只有主动忽略才不会对其创建。
 
     private Integer united1;    // 测试联合索引1
 
     private Integer united2;    // 测试联合索引1
 
-    private Integer newColumn;  // update 模式下，测试
+//    private Integer newColumn;  // update 模式下，测试新增列
 }

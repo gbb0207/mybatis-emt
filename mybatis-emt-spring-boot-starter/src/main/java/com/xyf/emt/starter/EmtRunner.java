@@ -10,7 +10,6 @@ public class EmtRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {  // spring 监听器会默认执行这个方法
-        // 启动Emt
         if (!isTestEnvironment()) {
             EmtBootstrap.start();
         }

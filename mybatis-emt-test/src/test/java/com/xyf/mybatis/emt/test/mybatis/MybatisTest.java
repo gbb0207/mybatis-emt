@@ -1,13 +1,10 @@
 package com.xyf.mybatis.emt.test.mybatis;
 
-import com.xyf.emt.starter.EnableEmtTest;
 import com.xyf.mybatis.emt.test.mapper.TestMapper;
 import com.xyf.mybatis.emt.test.pojo.TestTable;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.annotation.Resource;
 
 /**
  * @Author: 熊韵飞

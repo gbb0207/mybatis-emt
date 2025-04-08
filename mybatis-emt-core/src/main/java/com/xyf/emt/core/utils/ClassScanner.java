@@ -27,13 +27,13 @@ public class ClassScanner {
     public static Set<Class<?>> scan(String[] basePackages, Set<Class<? extends Annotation>> includeAnnotations, Set<Class<? extends Annotation>> excludeAnnotations) {
 
         if (basePackages == null || includeAnnotations == null) {
-            return Collections.emptySet();  // 没注解找个屁
+            return Collections.emptySet();
         }
 
-        EmtAnnotationFinder emtAnnotationFinder = EmtGlobalConfig.getEmtAnnotationFinder(); // 就是包了一层
+        EmtAnnotationFinder emtAnnotationFinder = EmtGlobalConfig.getEmtAnnotationFinder();
 
         return Arrays.stream(basePackages)
-                .map(basePackage -> {   // map：依据某个方法（map()中传入的）将某个数据源（stream()中的）处理后返回
+                .map(basePackage -> {
                     try {
                         return getClasses(basePackage,
                                 clazz -> includeAnnotations.stream().anyMatch(anno -> emtAnnotationFinder.exist(clazz, anno)) &&
@@ -50,7 +50,9 @@ public class ClassScanner {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         String path = packageName.replace('.', '/');
         String basePackage = path.split("/\\*")[0];
-        Pattern checkPattern = Pattern.compile("(" + packageName.replace(".", "\\/").replace("**", "[A-Za-z0-9$_/]+").replace("*", "[A-Za-z0-9$_]+") + "[A-Za-z0-9$_/]+)\\.class$");
+        Pattern checkPattern = Pattern.compile("(" + packageName.replace(".", "\\/")
+                .replace("**", "[A-Za-z0-9$_/]+")
+                .replace("*", "[A-Za-z0-9$_]+") + "[A-Za-z0-9$_/]+)\\.class$");
 
         Enumeration<URL> resources = classLoader.getResources(basePackage);
         Set<Class<?>> classes = new HashSet<>();

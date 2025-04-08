@@ -37,11 +37,11 @@ public class EmtAutoConfig {
     public EmtAutoConfig(   // spring 会默认执行这个构造器
             SqlSessionTemplate sqlSessionTemplate,
             EmtProperties emtProperties,
-            ObjectProvider<IStrategy<? extends TableMetadata, ? extends CompareTableInfo, ?>> strategies,
-            ObjectProvider<EmtAnnotationFinder> emtAnnotationFinder,
-            ObjectProvider<EmtOrmFrameAdapter> emtOrmFrameAdapter,
-            ObjectProvider<IDataSourceHandler> dynamicDataSourceHandler,
-            ObjectProvider<RecordSqlHandler> recordSqlHandler,
+            ObjectProvider<IStrategy<? extends TableMetadata, ? extends CompareTableInfo, ?>> strategies,   // 自定义数据源策略
+            ObjectProvider<EmtAnnotationFinder> emtAnnotationFinder,    // 自定义注解处理器
+            ObjectProvider<EmtOrmFrameAdapter> emtOrmFrameAdapter,  // 自定义框架适配器
+            ObjectProvider<IDataSourceHandler> dynamicDataSourceHandler,    // 自定义动态数据源处理器
+            ObjectProvider<RecordSqlHandler> recordSqlHandler,  // 自定义sql记录方式
             /* 拦截器 */
             ObjectProvider<EmtAnnotationInterceptor> emtAnnotationInterceptor,
             ObjectProvider<BuildTableMetadataInterceptor> buildTableMetadataInterceptor,
@@ -52,10 +52,10 @@ public class EmtAutoConfig {
             ObjectProvider<ModifyTableFinishCallback> modifyTableFinishCallback,
             ObjectProvider<RunStateCallback> runStateCallback,
             ObjectProvider<ValidateFinishCallback> validateFinishCallback,
-
+            /* 类型转换器 */
             ObjectProvider<JavaTypeToDatabaseTypeConverter> javaTypeToDatabaseTypeConverter) {
 
-        // 默认设置全局的SqlSessionFactory
+        // 默认设置全局的SqlSessionFactory，保证单例
         SqlSessionFactoryManager.setSqlSessionFactory(sqlSessionTemplate.getSqlSessionFactory());
 
         // 设置全局的配置
@@ -85,7 +85,7 @@ public class EmtAutoConfig {
         /* 拦截器 */
         // 假如有自定义的注解拦截器，就使用自定义的注解拦截器
         emtAnnotationInterceptor.ifAvailable(EmtGlobalConfig::setEmtAnnotationInterceptor);
-        // 假如有自定义的创建表拦截器，就使用自定义的创建表拦截器
+        // 假如有自定义的实体类元数据拦截器，就使用自定义的实体类元数据拦截器
         buildTableMetadataInterceptor.ifAvailable(EmtGlobalConfig::setBuildTableMetadataInterceptor);
         // 假如有自定义的创建表拦截器，就使用自定义的创建表拦截器
         createTableInterceptor.ifAvailable(EmtGlobalConfig::setCreateTableInterceptor);
