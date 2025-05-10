@@ -36,6 +36,11 @@ public class IndexMetadata {
      */
     protected String comment;
 
+    /**
+     * 索引方法
+     */
+    protected String method;
+
     @Data
     @Accessors(chain = true)
     @AllArgsConstructor(staticName = "newInstance")

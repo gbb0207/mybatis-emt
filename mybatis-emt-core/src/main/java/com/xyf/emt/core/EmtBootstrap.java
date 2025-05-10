@@ -6,6 +6,7 @@ import com.xyf.emt.core.config.PropertyConfig;
 import com.xyf.emt.core.dynamicds.IDataSourceHandler;
 import com.xyf.emt.core.strategy.IStrategy;
 import com.xyf.emt.core.strategy.mysql.MysqlStrategy;
+import com.xyf.emt.core.strategy.pgsql.PgsqlStrategy;
 import com.xyf.emt.core.utils.ClassScanner;
 import com.xyf.emt.core.utils.TableBeanUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +39,7 @@ public class EmtBootstrap {
         // 1.数据源策略注册
         // 注册内置的不同数据源策略，后面 IDataSourceHandler 实现类的 handleAnalysis() 会按 databaseDialect 来取数据库策略执行 sql。
         EmtGlobalConfig.addStrategy(new MysqlStrategy()); // 这里每个实现 IStrategy 的都会实现 databaseDialect，返回数据库方言字符串，此方法的 key 就是这个方言
+        EmtGlobalConfig.addStrategy(new PgsqlStrategy()); // 这里每个实现 IStrategy 的都会实现 databaseDialect，返回数据库方言字符串，此方法的 key 就是这个方言
 
         // 2.实体扫描
         // 获取扫描包路径，如果 @EnableXxx 中有值（即开发者填入的实体包名）则用其中的属性值，如果只用了 Enable 注解没有填写值，那么就返回启动类的包（等会从启动类的包开始递归寻

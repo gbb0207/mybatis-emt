@@ -11,10 +11,10 @@ spring:
       password: 12345
     # slave
     slave:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/mybatis_emt_test2?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
-      username: root
-      password: 12345
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://localhost:5432/mybatis_emt_test?currentSchema=public
+      username: postgres
+      password: 123456
 
 emt:
   enable: true
