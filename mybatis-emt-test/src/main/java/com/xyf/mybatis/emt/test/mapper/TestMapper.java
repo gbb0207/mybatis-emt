@@ -1,8 +1,10 @@
 package com.xyf.mybatis.emt.test.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.xyf.mybatis.emt.test.pojo.TestTable;
 import org.apache.ibatis.annotations.Insert;
 
-public interface TestMapper {
+public interface TestMapper extends BaseMapper<TestTable> {
 
     @Insert("INSERT INTO test_table (username, age, phone, united1, united2) " +
             "VALUES (#{username}, #{age}, #{phone}, #{united1}, #{united2})")

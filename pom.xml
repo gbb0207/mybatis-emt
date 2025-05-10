@@ -20,6 +20,7 @@
 
     <!-- 子模块 -->
     <modules>
+        <module>mybatis-emt-test-dynamicdatasource</module>
         <module>mybatis-emt-test</module>
         <module>mybatis-emt-core</module>
         <module>mybatis-emt-common</module>

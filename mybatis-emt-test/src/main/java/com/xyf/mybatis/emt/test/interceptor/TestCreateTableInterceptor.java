@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  * @Description:
  */
 
-@Component
+//@Component
 @Slf4j
 public class TestCreateTableInterceptor implements CreateTableInterceptor {
     @Override

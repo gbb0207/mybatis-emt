@@ -6,7 +6,7 @@ import lombok.NonNull;
 public class DefaultDataSourceHandler implements IDataSourceHandler {
 
     @Override
-    public void useDataSource(String dataSourceName) {
+    public void useDataSource(String dataSourceName) {  // 一个数据源时，不需要选择
         // nothing
     }
 

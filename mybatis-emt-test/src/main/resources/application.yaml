@@ -13,6 +13,7 @@ spring:
 mybatis-plus:
   configuration:
     default-enum-type-handler: com.baomidou.mybatisplus.core.handlers.MybatisEnumTypeHandler
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       update-strategy: not_null
@@ -21,7 +22,7 @@ mybatis-plus:
 emt:
   enable: true
   model-package: com.xyf.mybatis.emt.test.pojo
-  mode: create
+  mode: update
   auto-drop-column: true  # 配合 update 模式，删除无用列
   record-sql:
     enable: true

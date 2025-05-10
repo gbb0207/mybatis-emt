@@ -1,0 +1,22 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    # master
+    master:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/mybatis_emt_test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+      username: root
+      password: 12345
+    # slave
+    slave:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/mybatis_emt_test2?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+      username: root
+      password: 12345
+
+emt:
+  enable: true
+  mode: update
+  auto-drop-column: true

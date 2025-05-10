@@ -39,15 +39,16 @@ public interface IDataSourceHandler {
 //              4.自动取方言，传的实参都没用。。
 //              5.consumer 回调传入方言和实体Set。
         Map<String, Set<Class<?>>> needHandleTableMap = classList.stream()  // 注意下方 getDataSourceName()，需要配合 @Ds 注解标在实体类上（自定义注解！）
-                .collect(Collectors.groupingBy(this::getDataSourceName, Collectors.toSet()));   // groupingBy() 会返回一个 Map，好好学好好用
+                .collect(Collectors.groupingBy(this::getDataSourceName, Collectors.toSet()));   // groupingBy() 会返回一个 Map
 
         needHandleTableMap.forEach((dataSource, entityClasses) -> { // 没有主动指定数据源，所有实体类的数据源都默认为空字符串，走默认的 mysql 策略
             log.info("使用数据源：{}", dataSource);
             // 使用数据源。
             this.useDataSource(dataSource);
-            DatasourceNameManager.setDatasourceName(dataSource);
+            DatasourceNameManager.setDatasourceName(dataSource);    // 保存当前线程数据源的名称，供sql记录用
             try {
                 // 根据数据库名取方言，没用动态数据源处理器，那么这里用的是 EmtAutoConfig 给予的默认 SqlSessionFactory，返回 yml 里的数据源
+                // 直接通过当前线程的数据源取
                 String databaseDialect = this.getDatabaseDialect(dataSource);   // 例如返回 MySQL
                 log.info("数据库方言（{}）", databaseDialect);
                 // 注意，就这里执行了 consumer 一次，回到 BootStrap 的地方看 lambda
