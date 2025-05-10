@@ -9,12 +9,6 @@ import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
-
-/**
- * 创建更新表结构的Mapper
- *
- * @author don
- */
 public interface PgsqlTablesMapper {
 
     /**
